@@ -1,0 +1,66 @@
+{
+	"name": "Dev Dockerfile",
+	"image": "ghcr.io/domheal/devops-tooling-container:main",
+	// "dockerFile": "../Dockerfile",
+	// "context": "..",
+	"runArgs": [
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.kube:/root/.kube",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.helm:/root/.helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.zshrc:/root/.zshrc",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.config/helm:/root/.config/helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.cache/helm:/root/.cache/helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.docker:/root/.docker",
+		"-v",
+		"/var/run/docker.sock:/var/run/docker.sock"
+	],
+	"postCreateCommand": "bash .devcontainer/setup.sh",
+
+	"settings": {
+		"files.eol": "\n",
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"terminal.integrated.windowsEnableConpty": false,
+		"terminal.integrated.shellIntegration.enabled": true,
+		"cloudcode.autoDependencies": "off"
+	},
+	"mounts": [
+		"source=vscode-bashhistory,target=/commandhistory,type=volume",
+		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
+	],
+	"extensions": [
+		"tsandall.opa",
+		"streetsidesoftware.code-spell-checker",
+		"yzhang.markdown-all-in-one",
+		"gua.rainbow-brackets",
+		"aaron-bond.better-comments",
+		"DavidAnson.vscode-markdownlint",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"esbenp.prettier-vscode",
+		"golang.go",
+		"googlecloudtools.cloudcode",
+		"hashicorp.terraform",
+		"logicdiscovered.vsicons",
+		"ms-azure-devops.azure-pipelines",
+		"ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-aks-tools",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
+		"ms-vscode-remote.remote-containers",
+		"ms-vscode-remote.remote-wsl",
+		"ms-vscode.azure-account",
+		"PaloAltoNetworksInc.prisma-cloud",
+		"redhat.vscode-yaml",
+		"ritwickdey.LiveServer",
+		"SonarSource.sonarlint-vscode",
+		"VisualStudioExptTeam.vscodeintellicode",
+		"Bridgecrew.checkov"
+	]
+}
