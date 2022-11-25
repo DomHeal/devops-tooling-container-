@@ -11,7 +11,7 @@ ENV DIVE_VERSION=v0.10.0
 # renovate: datasource=github-releases depName=hashicorp/vault
 ENV VAULT_VERSION=1.12.1
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ENV TERRAFORM_VERSION=v1.3.4
+ENV TERRAFORM_VERSION=1.3.4
 # renovate: datasource=github-releases depName=hashicorp/packer
 ENV PACKER_VERSION=1.8.4
 ENV PACKAGES="\
