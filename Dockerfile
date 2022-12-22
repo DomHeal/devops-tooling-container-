@@ -10,11 +10,11 @@ ENV YQ_VERSION=v4.16.2
 ENV HADOLINT_VERSION=v2.8.0
 # renovate: datasource=github-releases depName=wagoodman/dive
 ENV DIVE_VERSION=v0.10.0
-# renovate: datasource=github-releases depName=hashicorp/vault versioning=docker
+# renovate: datasource=github-releases depName=hashicorp/vault extractVersion="^v(?<version>.*)$"
 ENV VAULT_VERSION=1.12.1
-# renovate: datasource=github-releases depName=hashicorp/terraform versioning=docker
+# renovate: datasource=github-releases depName=hashicorp/terraform extractVersion="^v(?<version>.*)$"
 ENV TERRAFORM_VERSION=1.3.4
-# renovate: datasource=github-releases depName=hashicorp/packer versioning=docker
+# renovate: datasource=github-releases depName=hashicorp/packer extractVersion="^v(?<version>.*)$"
 ENV PACKER_VERSION=1.8.4
 ENV PACKAGES="\
 git \
