@@ -16,6 +16,11 @@ ENV VAULT_VERSION=1.12.1
 ENV TERRAFORM_VERSION=1.3.4
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.8.4
+# renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
+ENV HELMDOCS_VERSION=1.10.0
+# renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
+ENV k6_VERSION=0.41.0
+
 ENV PACKAGES="\
 git \
 gcc \
@@ -73,7 +78,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | bash && \
     # Helm and plugins
     curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/quintush/helm-unittest && \
-    curl -sSLo helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v1.10.0/helm-docs_1.10.0_Linux_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
+    curl -sSLo helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v${HELMDOCS_VERSION}/helm-docs_${HELMDOCS_VERSION}_Linux_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
     curl -sSLo helm-changelog.tar.gz https://github.com/mogensen/helm-changelog/releases/download/v0.0.1/helm-changelog_0.0.1_linux_amd64.tar.gz && tar -xvf helm-changelog.tar.gz && mv helm-changelog /usr/local/bin && chmod +x /usr/local/bin/helm-changelog && \
     helm plugin install https://github.com/databus23/helm-diff && \
     # Development Tools
@@ -86,12 +91,12 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Azure tooling
     curl -sSL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops && \
     # Utilities
-    curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
+    curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/v0.46.1/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
     curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/v3.10.0/gator-v3.10.0-linux-amd64.tar.gz && tar -xvf gator-v3.10.0-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
-    curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v0.41.0/k6-v0.41.0-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-*/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
+    curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-*/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
