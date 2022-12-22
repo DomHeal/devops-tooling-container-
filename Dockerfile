@@ -19,7 +19,7 @@ ENV PACKER_VERSION=1.8.4
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.10.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV k6_VERSION=0.41.0
+ENV K6_VERSION=0.41.0
 
 ENV PACKAGES="\
 git \
