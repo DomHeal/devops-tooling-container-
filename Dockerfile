@@ -8,8 +8,8 @@ ENV SHELL /bin/zsh
 ENV YQ_VERSION=v4.16.2
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.8.0
-# renovate: datasource=github-releases depName=wagoodman/dive
-ENV DIVE_VERSION=v0.10.0
+# renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
+ENV DIVE_VERSION=0.10.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
 ENV VAULT_VERSION=1.12.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
