@@ -23,7 +23,7 @@ ENV K6_VERSION=0.42.0
 # renovate: datasource=github-releases depName=kubeshark/kubeshark
 ENV KUBESHARK_VERSION=37.0
 # renovate: datasource=github-releases depName=operator-framework/operator-sdk
-ENV OPERATORSDK_VERSION=v1.21.0
+ENV OPERATORSDK_VERSION=v1.26.0
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind
 ENV KIND_VERSION=v0.17.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
