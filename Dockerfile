@@ -28,7 +28,8 @@ ENV OPERATORSDK_VERSION=v1.26.0
 ENV KIND_VERSION=v0.17.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
 ENV GATOR_VERSION=v3.10.0
-
+# renovate: datasource=github-releases depName=open-policy-agent/opa
+ENV OPA_VERSION=v0.47.4
 
 ENV PACKAGES="\
 git \
@@ -101,7 +102,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops && \
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
-    curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/v0.46.1/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
+    curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/${OPA_VERSION}/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
     curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/${GATOR_VERSION}/gator-${GATOR_VERSION}-linux-amd64.tar.gz && tar -xvf gator-${GATOR_VERSION}-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
