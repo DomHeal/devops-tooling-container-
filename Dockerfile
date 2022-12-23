@@ -20,6 +20,15 @@ ENV PACKER_VERSION=1.8.5
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
 ENV K6_VERSION=0.42.0
+# renovate: datasource=github-releases depName=kubeshark/kubeshark
+ENV KUBESHARK_VERSION=37.0
+# renovate: datasource=github-releases depName=operator-framework/operator-sdk
+ENV OPERATORSDK_VERSION=v1.21.0
+# renovate: datasource=github-releases depName=kubernetes-sigs/kind
+ENV KIND_VERSION=v0.17.0
+# renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
+ENV GATOR_VERSION=v3.10.0
+
 
 ENV PACKAGES="\
 git \
@@ -60,7 +69,7 @@ WORKDIR /tmp
 COPY .zshrc tests/goss.yaml requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
     pip3 install --no-cache-dir -r requirements.txt && \
-    curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
+    curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
     curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
     tar -zxvf krew-linux_amd64.tar.gz && chmod +x krew-linux_amd64 && mv krew-linux_amd64 /usr/local/bin/kubectl-krew && \
@@ -93,7 +102,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/v0.46.1/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
-    curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/v3.10.0/gator-v3.10.0-linux-amd64.tar.gz && tar -xvf gator-v3.10.0-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
+    curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/${GATOR_VERSION}/gator-${GATOR_VERSION}-linux-amd64.tar.gz && tar -xvf gator-${GATOR_VERSION}-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
     curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-*/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
@@ -101,8 +110,8 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
-    curl -sSLo operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/v1.21.0/operator-sdk_linux_amd64 && chmod +x operator-sdk && mv operator-sdk /usr/local/bin/operator-sdk && \
-    curl -sSLo /usr/local/bin/kubeshark https://github.com/kubeshark/kubeshark/releases/download/37.0/kubeshark_linux_amd64 && chmod +x /usr/local/bin/kubeshark && \
+    curl -sSLo operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/${OPERATORSDK_VERSION}/operator-sdk_linux_amd64 && chmod +x operator-sdk && mv operator-sdk /usr/local/bin/operator-sdk && \
+    curl -sSLo /usr/local/bin/kubeshark https://github.com/kubeshark/kubeshark/releases/download/${KUBESHARK_VERSION}/kubeshark_linux_amd64 && chmod +x /usr/local/bin/kubeshark && \
     # Run Tests
     goss v && \
     # Clean up
