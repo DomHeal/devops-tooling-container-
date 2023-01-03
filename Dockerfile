@@ -113,6 +113,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
     curl -sSLo operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/${OPERATORSDK_VERSION}/operator-sdk_linux_amd64 && chmod +x operator-sdk && mv operator-sdk /usr/local/bin/operator-sdk && \
     curl -sSLo /usr/local/bin/kubeshark https://github.com/kubeshark/kubeshark/releases/download/${KUBESHARK_VERSION}/kubeshark_linux_amd64 && chmod +x /usr/local/bin/kubeshark && \
+    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
     # Run Tests
     goss v && \
     # Clean up
