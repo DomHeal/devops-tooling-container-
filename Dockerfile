@@ -5,7 +5,7 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.30.8
+ENV YQ_VERSION=v4.31.1
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
@@ -19,7 +19,7 @@ ENV PACKER_VERSION=1.8.6
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV K6_VERSION=0.42.0
+ENV K6_VERSION=0.43.0
 # renovate: datasource=github-releases depName=kubeshark/kubeshark
 ENV KUBESHARK_VERSION=37.0
 # renovate: datasource=github-releases depName=operator-framework/operator-sdk
@@ -29,7 +29,7 @@ ENV KIND_VERSION=v0.17.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
 ENV GATOR_VERSION=v3.11.0
 # renovate: datasource=github-releases depName=open-policy-agent/opa
-ENV OPA_VERSION=v0.49.0
+ENV OPA_VERSION=v0.49.2
 
 ENV PACKAGES="\
 git \
