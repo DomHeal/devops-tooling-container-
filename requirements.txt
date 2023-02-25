@@ -28,3 +28,4 @@ hvac
 pre-commit
 pyvmomi
 checkov
+ansible>=7.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
