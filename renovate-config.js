@@ -5,5 +5,6 @@ module.exports = {
   platform: 'github',
   repositories: [
     'DomHeal/devops-tooling-container',
-  ]
+  ],
+  dependencyDashboard: false
 };
