@@ -9,12 +9,6 @@ docker
 jinja2
 jmespath
 lxml
-molecule
-molecule-azure
-molecule-containers
-molecule-docker
-molecule-gce
-molecule-goss
 paramiko
 pyyaml
 requests
