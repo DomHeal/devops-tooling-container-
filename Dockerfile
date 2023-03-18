@@ -5,31 +5,31 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.31.1
+ENV YQ_VERSION=v4.32.1
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
 ENV DIVE_VERSION=0.10.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
-ENV VAULT_VERSION=1.12.3
+ENV VAULT_VERSION=1.13.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.3.9
+ENV TERRAFORM_VERSION=1.4.2
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.8.6
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV K6_VERSION=0.43.0
+ENV K6_VERSION=0.43.1
 # renovate: datasource=github-releases depName=kubeshark/kubeshark
 ENV KUBESHARK_VERSION=37.0
 # renovate: datasource=github-releases depName=operator-framework/operator-sdk
-ENV OPERATORSDK_VERSION=v1.27.0
+ENV OPERATORSDK_VERSION=v1.28.0
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind
 ENV KIND_VERSION=v0.17.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
 ENV GATOR_VERSION=v3.11.0
 # renovate: datasource=github-releases depName=open-policy-agent/opa
-ENV OPA_VERSION=v0.49.2
+ENV OPA_VERSION=v0.50.1
 
 ENV PACKAGES="\
 git \
