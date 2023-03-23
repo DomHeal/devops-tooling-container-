@@ -56,7 +56,6 @@ vim \
 docker.io \
 unzip \
 fzf \
-jq \
 sshpass \
 less \
 golang \
@@ -106,7 +105,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/${GATOR_VERSION}/gator-${GATOR_VERSION}-linux-amd64.tar.gz && tar -xvf gator-${GATOR_VERSION}-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
-    curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-*/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
