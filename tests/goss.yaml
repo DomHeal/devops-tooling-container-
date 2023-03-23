@@ -73,13 +73,7 @@ command:
     exit-status: 0
     stdout: []
     stderr: []
-    timeout: 0 
-  jq:
-    exec: jq --version
-    exit-status: 0
-    stdout: []
-    stderr: []
-    timeout: 0 
+    timeout: 0
   dive:
     exec: dive --version
     exit-status: 0
@@ -88,12 +82,6 @@ command:
     timeout: 0 
   istioctl:
     exec: istioctl version --remote=false
-    exit-status: 0
-    stdout: []
-    stderr: []
-    timeout: 0 
-  k6:
-    exec: k6 version
     exit-status: 0
     stdout: []
     stderr: []
