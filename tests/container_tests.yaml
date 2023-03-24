@@ -10,7 +10,7 @@ commandTests:
     args: ["version"]
     exitCode: 0
   - name: kubectl version
-    command: argocd
+    command: kubectl
     args: ["version --client"]
     exitCode: 0
   - name: gcloud version
@@ -38,7 +38,7 @@ commandTests:
     args: ["--version"]
     exitCode: 0
   - name: yq --version
-    command: yq --version
+    command: yq
     args: ["--version"]
     exitCode: 0
   - name: dive --version
@@ -47,7 +47,7 @@ commandTests:
     exitCode: 0
   - name: istioctl version --remote=false
     command: istioctl
-    args: ["istioctl version --remote=false"]
+    args: ["version --remote=false"]
     exitCode: 0
   - name: terraform version
     command: terraform
