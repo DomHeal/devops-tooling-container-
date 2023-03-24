@@ -66,7 +66,7 @@ ansible \
 "
 WORKDIR /tmp
 # Copy config files
-COPY .zshrc tests/goss.yaml requirements.txt ./
+COPY .zshrc requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
     pip3 install --no-cache-dir -r requirements.txt && \
     curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
@@ -104,7 +104,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/${OPA_VERSION}/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
     curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/${GATOR_VERSION}/gator-${GATOR_VERSION}-linux-amd64.tar.gz && tar -xvf gator-${GATOR_VERSION}-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
-    curl -fsSL https://goss.rocks/install | sh && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
@@ -113,6 +112,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSLo /usr/local/bin/kubeshark https://github.com/kubeshark/kubeshark/releases/download/${KUBESHARK_VERSION}/kubeshark_linux_amd64 && chmod +x /usr/local/bin/kubeshark && \
     sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
     # Run Tests
-    goss v && \
+    curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test && \
     # Clean up
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
