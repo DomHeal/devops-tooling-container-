@@ -1,0 +1,61 @@
+commandTests:
+  - name: argocd version
+    command: argocd
+    args: ["version --client"]
+    exitCode: 0
+  - name: helm version
+    command: helm
+    args: ["version"]
+    exitCode: 0
+  - name: kubectl version
+    command: argocd
+    args: ["version --client"]
+    exitCode: 0
+  - name: gcloud version
+    command: gcloud
+    args: ["version"]
+    exitCode: 0
+  - name: kind version
+    command: kind
+    args: ["version"]
+    exitCode: 0
+  - name: az version
+    command: az
+    args: ["version"]
+    exitCode: 0
+  - name: tflint version
+    command: tflint
+    args: ["--version"]
+    exitCode: 0
+  - name: opa version
+    command: opa
+    args: ["version"]
+    exitCode: 0
+  - name: gator --version
+    command: gator
+    args: ["--version"]
+    exitCode: 0
+  - name: yq --version
+    command: yq --version
+    args: ["--version"]
+    exitCode: 0
+  - name: dive --version
+    command: dive
+    args: ["--version"]
+    exitCode: 0
+  - name: istioctl version --remote=false
+    command: istioctl
+    args: ["istioctl version --remote=false"]
+    exitCode: 0
+  - name: terraform version
+    command: terraform
+    args: ["version"]
+    exitCode: 0
+  - name: tfswitch --version
+    command: tfswitch
+    args: ["--version"]
+    exitCode: 0
+  - name: tgswitch --version
+    command: tgswitch
+    args: ["--version"]
+    exitCode: 0
