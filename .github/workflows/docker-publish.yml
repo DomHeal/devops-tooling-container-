@@ -85,7 +85,7 @@ jobs:
           load: true
           
       - name: run structure tests
-        uses: plexsystems/container-structure-test-action@v0.2.0
+        uses: plexsystems/container-structure-test-action@v0.3.0
         with:
           image: ${{ steps.meta.outputs.tags }}
           config: tests/container_tests.yaml
