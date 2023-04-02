@@ -21,45 +21,80 @@
 	],
 	"postCreateCommand": "bash .devcontainer/setup.sh",
 	"mounts": [
-	   "source=vscode-bashhistory,target=/commandhistory,type=volume",
-	   "source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
-    	   "source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
+		"source=vscode-bashhistory,target=/commandhistory,type=volume",
+		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
 	],
 	"customizations": {
 	  "vscode": {
 			"extensions": [
-			"tsandall.opa",
-			"streetsidesoftware.code-spell-checker",
-			"yzhang.markdown-all-in-one",
-			"gua.rainbow-brackets",
-			"aaron-bond.better-comments",
-			"DavidAnson.vscode-markdownlint",
-			"donjayamanne.githistory",
-			"eamodio.gitlens",
-			"esbenp.prettier-vscode",
-			"golang.go",
-			"googlecloudtools.cloudcode",
-			"hashicorp.terraform",
-			"ms-azure-devops.azure-pipelines",
-			"ms-azuretools.vscode-docker",
-			"ms-kubernetes-tools.vscode-aks-tools",
-			"ms-kubernetes-tools.vscode-kubernetes-tools",
-			"ms-vscode-remote.remote-containers",
-			"ms-vscode-remote.remote-wsl",
-			"ms-vscode.azure-account",
-			"PaloAltoNetworksInc.prisma-cloud",
-			"redhat.vscode-yaml",
-			"SonarSource.sonarlint-vscode",
-			"VisualStudioExptTeam.vscodeintellicode",
-			"Bridgecrew.checkov"
+				"tsandall.opa",
+				"yzhang.markdown-all-in-one",
+				"gua.rainbow-brackets",
+				"aaron-bond.better-comments",
+				"DavidAnson.vscode-markdownlint",
+				"donjayamanne.githistory",
+				"eamodio.gitlens",
+				"esbenp.prettier-vscode",
+				"golang.go",
+				"googlecloudtools.cloudcode",
+				"hashicorp.terraform",
+				"ms-azure-devops.azure-pipelines",
+				"ms-azuretools.vscode-docker",
+				"ms-kubernetes-tools.vscode-aks-tools",
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode-remote.remote-wsl",
+				"ms-vscode.azure-account",
+				"PaloAltoNetworksInc.prisma-cloud",
+				"redhat.vscode-yaml",
+				"SonarSource.sonarlint-vscode",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"Bridgecrew.checkov"
 			],
 			"settings": {
 				"files.eol": "\n",
 				"terminal.integrated.defaultProfile.linux": "zsh",
 				"terminal.integrated.windowsEnableConpty": false,
 				"terminal.integrated.shellIntegration.enabled": true,
-				"cloudcode.autoDependencies": "off"
+				"cloudcode.autoDependencies": "off",
+				"go.useLanguageServer": true,
+				"[go]": {
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"[go.mod]": {
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"gopls": {
+					"build.buildFlags": [
+						"-tags",
+						""
+					],
+					"usePlaceholders": false,
+					"staticcheck": true
+				},
+				"go.lintTool": "golangci-lint",
+				"go.lintOnSave": "package",
+				"editor.formatOnSave": true,
+				"go.toolsEnvVars": {
+					"CGO_ENABLED": "0"
+				},
+				"go.testEnvVars": {
+					"CGO_ENABLED": "1"
+				},
+				"go.testFlags": [
+					"-v",
+					"-race"
+				],
+				"go.testTimeout": "10s",
+				"go.coverOnSingleTest": true,
+				"go.coverOnSingleTestFile": true,
+				"go.coverOnTestPackage": true
 			}
-		}
+		}  
 	}
 }
