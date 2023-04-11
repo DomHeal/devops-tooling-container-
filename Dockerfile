@@ -5,7 +5,7 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.33.2
+ENV YQ_VERSION=v4.33.3
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
