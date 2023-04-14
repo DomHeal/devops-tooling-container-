@@ -38,6 +38,7 @@ gnupg \
 rsync \
 ssh \
 libyaml-dev \
+libc6-dev \
 wget \
 docker \
 curl \
