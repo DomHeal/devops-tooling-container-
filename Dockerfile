@@ -13,7 +13,7 @@ ENV DIVE_VERSION=0.10.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
 ENV VAULT_VERSION=1.13.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.4.4
+ENV TERRAFORM_VERSION=1.4.5
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.8.6
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
@@ -27,7 +27,7 @@ ENV OPERATORSDK_VERSION=v1.28.0
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind
 ENV KIND_VERSION=v0.18.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
-ENV GATOR_VERSION=v3.11.0
+ENV GATOR_VERSION=v3.12.0
 # renovate: datasource=github-releases depName=open-policy-agent/opa
 ENV OPA_VERSION=v0.51.0
 
