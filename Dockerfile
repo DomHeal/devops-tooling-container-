@@ -20,16 +20,8 @@ ENV PACKER_VERSION=1.8.6
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
 ENV K6_VERSION=0.43.1
-# renovate: datasource=github-releases depName=kubeshark/kubeshark
-ENV KUBESHARK_VERSION=37.0
-# renovate: datasource=github-releases depName=operator-framework/operator-sdk
-ENV OPERATORSDK_VERSION=v1.28.0
-# renovate: datasource=github-releases depName=kubernetes-sigs/kind
 ENV KIND_VERSION=v0.18.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
-ENV GATOR_VERSION=v3.12.0
-# renovate: datasource=github-releases depName=open-policy-agent/opa
-ENV OPA_VERSION=v0.51.0
 
 ENV PACKAGES="\
 git \
@@ -87,31 +79,24 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash && \
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | bash && \
     # Helm and plugins
-    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/quintush/helm-unittest && \
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/helm-unittest/helm-unittest && \
     curl -sSLo helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v${HELMDOCS_VERSION}/helm-docs_${HELMDOCS_VERSION}_Linux_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
     curl -sSLo helm-changelog.tar.gz https://github.com/mogensen/helm-changelog/releases/download/v0.0.1/helm-changelog_0.0.1_linux_amd64.tar.gz && tar -xvf helm-changelog.tar.gz && mv helm-changelog /usr/local/bin && chmod +x /usr/local/bin/helm-changelog && \
-    helm plugin install https://github.com/databus23/helm-diff && \
-    # Development Tools
-    curl -sSLo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/ && \
+    # Argocd
     curl -sSLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && chmod +x /usr/local/bin/argocd && \
     curl -sSLo /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64 && chmod +x /usr/local/bin/kubectl-argo-rollouts && \
     # GCP tooling
     curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts && mv /root/google-cloud-sdk /opt/google-cloud-sdk && \
-    gcloud components install nomos kpt gsutil gke-gcloud-auth-plugin && \
+    gcloud components install gsutil gke-gcloud-auth-plugin && \
     # Azure tooling
     curl -sSL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops && \
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
-    curl -sSLo /usr/local/bin/opa https://openpolicyagent.org/downloads/${OPA_VERSION}/opa_linux_amd64_static && chmod +x /usr/local/bin/opa && \
-    curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/${GATOR_VERSION}/gator-${GATOR_VERSION}-linux-amd64.tar.gz && tar -xvf gator-${GATOR_VERSION}-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
-    curl -sSLo operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/${OPERATORSDK_VERSION}/operator-sdk_linux_amd64 && chmod +x operator-sdk && mv operator-sdk /usr/local/bin/operator-sdk && \
-    curl -sSLo /usr/local/bin/kubeshark https://github.com/kubeshark/kubeshark/releases/download/${KUBESHARK_VERSION}/kubeshark_linux_amd64 && chmod +x /usr/local/bin/kubeshark && \
-    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
     # Run Tests
     curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test && \
     # Clean up
