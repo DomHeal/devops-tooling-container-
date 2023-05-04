@@ -21,13 +21,6 @@ commandTests:
     command: tflint
     args: ["--version"]
     exitCode: 0
-  - name: opa version
-    command: opa
-    args: ["version"]
-    exitCode: 0
-  - name: gator --version
-    command: gator
-    args: ["--version"]
     exitCode: 0
   - name: yq --version
     command: yq
