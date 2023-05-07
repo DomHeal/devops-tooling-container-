@@ -21,7 +21,6 @@ commandTests:
     command: tflint
     args: ["--version"]
     exitCode: 0
-    exitCode: 0
   - name: yq --version
     command: yq
     args: ["--version"]
