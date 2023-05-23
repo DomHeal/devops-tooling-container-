@@ -15,6 +15,7 @@ requests
 yamllint
 bridgecrew
 kubernetes
+mkdocs-material
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools
