@@ -56,6 +56,7 @@ autossh \
 make \
 language-pack-en \
 ansible \
+skopeo \
 "
 WORKDIR /tmp
 # Copy config files
