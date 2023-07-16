@@ -5,23 +5,25 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.33.3
+ENV YQ_VERSION=v4.34.2
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
-ENV DIVE_VERSION=0.10.0
+ENV DIVE_VERSION=0.11.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
-ENV VAULT_VERSION=1.13.1
+ENV VAULT_VERSION=1.14.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.4.5
+ENV TERRAFORM_VERSION=1.5.3
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
-ENV PACKER_VERSION=1.8.6
+ENV PACKER_VERSION=1.9.1
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV K6_VERSION=0.43.1
-ENV KIND_VERSION=v0.18.0
-# renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
+ENV K6_VERSION=0.45.0
+# renovate: datasource=github-releases depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$
+ENV KIND_VERSION=v0.20.0
+# renovate: datasource=github-releases depName=hidetatz/kubecolor extractVersion=^v(?<version>.*)$
+ENV KUBECOLOR_VERSION=0.0.25
 
 ENV PACKAGES="\
 git \
@@ -94,7 +96,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
-    go install github.com/hidetatz/kubecolor/cmd/kubecolor@latest && \
+    curl -sSLo kubecolor.tar.gz https://github.com/hidetatz/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz && tar -xvf kubecolor.tar.gz && mv kubecolor /usr/local/bin/ && chmod +x /usr/local/bin/kubecolor && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
