@@ -20,8 +20,10 @@ ENV PACKER_VERSION=1.9.1
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
 ENV K6_VERSION=0.45.0
-ENV KIND_VERSION=v0.18.0
-# renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
+# renovate: datasource=github-releases depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$
+ENV KIND_VERSION=v0.20.0
+# renovate: datasource=github-releases depName=hidetatz/kubecolor extractVersion=^v(?<version>.*)$
+ENV KUBECOLOR_VERSION=0.0.25
 
 ENV PACKAGES="\
 git \
@@ -94,7 +96,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 && chmod +x /usr/bin/yq && \
-    go install github.com/hidetatz/kubecolor/cmd/kubecolor@latest && \
+    curl -sSLo kubecolor.tar.gz https://github.com/hidetatz/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz && tar -xvf kubecolor.tar.gz && mv kubecolor /usr/local/bin/ && chmod +x /usr/local/bin/kubecolor && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
