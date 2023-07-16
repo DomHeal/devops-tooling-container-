@@ -5,21 +5,21 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.33.3
+ENV YQ_VERSION=v4.34.2
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
-ENV DIVE_VERSION=0.10.0
+ENV DIVE_VERSION=0.11.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
-ENV VAULT_VERSION=1.13.1
+ENV VAULT_VERSION=1.14.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.4.5
+ENV TERRAFORM_VERSION=1.5.3
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
-ENV PACKER_VERSION=1.8.6
+ENV PACKER_VERSION=1.9.1
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV K6_VERSION=0.43.1
+ENV K6_VERSION=0.45.0
 ENV KIND_VERSION=v0.18.0
 # renovate: datasource=github-releases depName=open-policy-agent/gatekeeper
 
