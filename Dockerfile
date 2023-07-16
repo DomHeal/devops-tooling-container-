@@ -1,4 +1,4 @@
-FROM ubuntu:23.10
+FROM ubuntu:22.10
 ENV ANSIBLE_FORCE_COLOR=1
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
 ENV PATH $PATH:/opt/google-cloud-sdk/bin
