@@ -5,7 +5,7 @@ ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
-ENV YQ_VERSION=v4.34.2
+ENV YQ_VERSION=v4.35.1
 # renovate: datasource=github-releases depName=hadolint/hadolint
 ENV HADOLINT_VERSION=v2.12.0
 # renovate: datasource=github-releases depName=wagoodman/dive extractVersion=^v(?<version>.*)$
@@ -15,11 +15,11 @@ ENV VAULT_VERSION=1.14.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
 ENV TERRAFORM_VERSION=1.5.5
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
-ENV PACKER_VERSION=1.9.2
+ENV PACKER_VERSION=1.9.4
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
 ENV HELMDOCS_VERSION=1.11.0
 # renovate: datasource=github-releases depName=grafana/k6 extractVersion=^v(?<version>.*)$
-ENV K6_VERSION=0.45.1
+ENV K6_VERSION=0.46.0
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind extractVersion=^v(?<version>.*)$
 ENV KIND_VERSION=v0.20.0
 # renovate: datasource=github-releases depName=hidetatz/kubecolor extractVersion=^v(?<version>.*)$
