@@ -101,6 +101,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
+    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
     # Run Tests
     curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test && \
     # Clean up
