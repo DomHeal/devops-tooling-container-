@@ -13,7 +13,7 @@ ENV DIVE_VERSION=0.11.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
 ENV VAULT_VERSION=1.14.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.5.5
+ENV TERRAFORM_VERSION=1.5.6
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.9.4
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
