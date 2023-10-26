@@ -1,4 +1,4 @@
-FROM ubuntu:22.10
+FROM ubuntu:23.10
 ENV ANSIBLE_FORCE_COLOR=1
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
 ENV PATH $PATH:/opt/google-cloud-sdk/bin
@@ -13,7 +13,7 @@ ENV DIVE_VERSION=0.11.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
 ENV VAULT_VERSION=1.14.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.5.6
+ENV TERRAFORM_VERSION=1.5.5
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.9.4
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
@@ -34,14 +34,14 @@ ssh \
 libyaml-dev \
 libc6-dev \
 wget \
-docker \
 curl \
 apt-transport-https \
 ca-certificates \ 
 python3 \
+python3-pip \
+python3.11-venv \
 software-properties-common \
 zsh \
-python3-pip \
 maven \
 npm \
 openjdk-17-jdk \
@@ -64,7 +64,7 @@ WORKDIR /tmp
 # Copy config files
 COPY .zshrc requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
-    pip3 install --no-cache-dir -r requirements.txt && \
+    python3 -m venv .venv && . .venv/bin/activate && python3 -m pip install -r requirements.txt && \
     curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
     curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
@@ -101,7 +101,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
     mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
-    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
     # Run Tests
     curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test && \
     # Clean up
