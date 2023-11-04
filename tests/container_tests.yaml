@@ -41,3 +41,8 @@ commandTests:
     command: tgswitch
     args: ["--version"]
     exitCode: 0
+  - name: ansible --version
+    command: ansible
+    args: ["--version"]
+    exitCode: 0
+
