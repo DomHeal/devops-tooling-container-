@@ -1,29 +1,21 @@
 {
 	"name": "Dev Dockerfile",
 	"image": "ghcr.io/domheal/devops-tooling-container:main",
-	"runArgs": [
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.kube:/root/.kube",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.helm:/root/.helm",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.zshrc:/root/.zshrc",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.config/helm:/root/.config/helm",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.cache/helm:/root/.cache/helm",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.docker:/root/.docker",
-		"-v", 
-		"/var/run/docker.sock:/var/run/docker.sock"
-	],
 	"postCreateCommand": "bash .devcontainer/setup.sh",
 	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+
+		"source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh-localhost,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.helm,target=/root/.helm,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.zshrc,target=/root/.zshrc,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.config/helm,target=/root/.config/helm,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.cache/helm,target=/root/.cache/helm,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.docker,target=/root/.docker,type=bind,consistency=delegated",
+		"source=${env:HOME}${env:USERPROFILE}/.kube,target=/root/.kube,type=bind,consistency=delegated",
+		
 		"source=vscode-bashhistory,target=/commandhistory,type=volume",
 		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
-    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
+   		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
 	],
 	"customizations": {
 	  "vscode": {
