@@ -6,7 +6,6 @@
 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
 
 		"source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh-localhost,type=bind,consistency=delegated",
-		"source=${env:HOME}${env:USERPROFILE}/.helm,target=/root/.helm,type=bind,consistency=delegated",
 		"source=${env:HOME}${env:USERPROFILE}/.zshrc,target=/root/.zshrc,type=bind,consistency=delegated",
 		"source=${env:HOME}${env:USERPROFILE}/.config/helm,target=/root/.config/helm,type=bind,consistency=delegated",
 		"source=${env:HOME}${env:USERPROFILE}/.cache/helm,target=/root/.cache/helm,type=bind,consistency=delegated",
