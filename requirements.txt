@@ -13,7 +13,7 @@ paramiko
 pyyaml
 requests
 yamllint
-bridgecrew
+checkov
 kubernetes
 mkdocs-material
 
