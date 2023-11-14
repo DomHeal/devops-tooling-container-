@@ -1,4 +1,4 @@
-FROM ubuntu:22.10
+FROM ubuntu:23.10
 ENV ANSIBLE_FORCE_COLOR=1
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
 ENV PATH $PATH:/opt/google-cloud-sdk/bin
@@ -34,7 +34,7 @@ ssh \
 libyaml-dev \
 libc6-dev \
 wget \
-docker \
+podman \
 curl \
 apt-transport-https \
 ca-certificates \ 
@@ -64,7 +64,7 @@ WORKDIR /tmp
 # Copy config files
 COPY .zshrc requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
-    pip3 install --no-cache-dir -r requirements.txt && \
+    python3 -m pip install --no-cache-dir --break-system-packages -r requirements.txt && \
     curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
     curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
