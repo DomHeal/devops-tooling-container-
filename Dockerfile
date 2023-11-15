@@ -13,7 +13,7 @@ ENV DIVE_VERSION=0.11.0
 # renovate: datasource=github-releases depName=hashicorp/vault extractVersion=^v(?<version>.*)$
 ENV VAULT_VERSION=1.14.1
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.*)$
-ENV TERRAFORM_VERSION=1.5.6
+ENV TERRAFORM_VERSION=1.5.5
 # renovate: datasource=github-releases depName=hashicorp/packer extractVersion=^v(?<version>.*)$
 ENV PACKER_VERSION=1.9.4
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v(?<version>.*)$
@@ -102,6 +102,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
     sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin && \
+    npm i -g renovate && \
     # Run Tests
     curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test && \
     # Clean up
