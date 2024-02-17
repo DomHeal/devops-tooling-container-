@@ -44,7 +44,7 @@ zsh \
 python3-pip \
 maven \
 npm \
-openjdk-17-jdk \
+openjdk-21-jdk \
 zsh-syntax-highlighting \ 
 zsh-autosuggestions \
 vim \
