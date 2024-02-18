@@ -93,7 +93,7 @@ jobs:
           
       - name: Run Docker scan
         uses: aquasecurity/trivy-action@master
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' && runner.os == 'Linux' }}  # Only supports linux
         with:
           image-ref: ${{ steps.meta.outputs.tags }}
           format: 'template'
@@ -104,7 +104,7 @@ jobs:
           
       - name: Upload scan results
         uses: github/codeql-action/upload-sarif@v2
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' && runner.os == 'Linux' }}  # Only supports linux
         with:
           sarif_file: 'trivy-results.sarif'
 
