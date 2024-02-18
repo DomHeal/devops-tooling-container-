@@ -86,6 +86,7 @@ jobs:
           
       - name: run structure tests
         uses: plexsystems/container-structure-test-action@v0.3.0
+        if: runner.os == 'Linux' # Only supports linux
         with:
           image: ${{ steps.meta.outputs.tags }}
           config: tests/container_tests.yaml
